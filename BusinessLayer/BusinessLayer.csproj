@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6B1531A0-B12C-4C99-BF8A-15346ECD2F0B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BusinessLayer</RootNamespace>
+    <AssemblyName>BusinessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Blake2Sharp">
+      <HintPath>..\lib\Blake2Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Concurrency\Transport\BaseLock.cs" />
+    <Compile Include="Concurrency\Transport\DisposableBaseEvent.cs" />
+    <Compile Include="Concurrency\Transport\TransportBaseThread.cs" />
+    <Compile Include="Entities\Chunking\Adler32RollingChecksum.cs" />
+    <Compile Include="Entities\Chunking\Chunk.cs" />
+    <Compile Include="Entities\Chunking\CompressedChunk.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpInitialCommunicationPacket.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpInitialCommunicationPacketStruct.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpInitialCommunicationResponsePacket.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpInitialPacket.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpInitialResponsePacket.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpInitialResponsePacketStruct.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpLocalServerResponsePacket.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpRemoteProtocolIntialResponsePacket.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpTransportConstants.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpTransportFlags.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpTransportMessage.cs" />
+    <Compile Include="Entities\IoCpPackets\IocpTransportPacket.cs" />
+    <Compile Include="Entities\IoCpPackets\RemoteTransportPackets\IocpRemoteFileUploadFileCompletedPacket.cs" />
+    <Compile Include="Entities\IoCpPackets\RemoteTransportPackets\IocpRemoteFileUploadMetadataPacket.cs" />
+    <Compile Include="Entities\IoCpPackets\RemoteTransportPackets\IocpRemoteFileUploadPacket.cs" />
+    <Compile Include="Entities\IoCpPackets\RemoteTransportPackets\IocpRemoteRetransmissionPacket.cs" />
+    <Compile Include="Entities\IoCpPackets\RemoteTransportPackets\IocpRemoteRetransmissionResponsePacket.cs" />
+    <Compile Include="Entities\Transport\DirtyFile.cs" />
+    <Compile Include="Entities\Transport\IocpConnectionStatus.cs" />
+    <Compile Include="Entities\Transport\Packet.cs" />
+    <Compile Include="Entities\Transport\PacketSerializer.cs" />
+    <Compile Include="Entities\Transport\Preamble.cs" />
+    <Compile Include="Entities\Transport\DefaultServerConfiguration.cs" />
+    <Compile Include="Extensions\ArrayExtensions.cs" />
+    <Compile Include="Extensions\GenericExtensions.cs" />
+    <Compile Include="Extensions\StreamExtensions.cs" />
+    <Compile Include="Implementation\Chunking\IChunker.cs" />
+    <Compile Include="Implementation\Chunking\StaticChunker.cs" />
+    <Compile Include="Implementation\Chunking\VariableLengthChunker.cs" />
+    <Compile Include="Implementation\DeltaDifferential\Sais.cs" />
+    <Compile Include="Implementation\rsync\Blake32RollingChecksum.cs" />
+    <Compile Include="Implementation\rsync\Blake32Rsync.cs" />
+    <Compile Include="Implementation\rsync\DeltaCalculator.cs" />
+    <Compile Include="Implementation\rsync\DeltaStream.cs" />
+    <Compile Include="Implementation\rsync\PatchedStream.cs" />
+    <Compile Include="Implementation\rsync\SignatureHelpers.cs" />
+    <Compile Include="Implementation\rsync\SignatureStream.cs" />
+    <Compile Include="Implementation\Transport\Client\IClient.cs" />
+    <Compile Include="Implementation\Transport\Client\IocpTcpClient.cs" />
+    <Compile Include="Implementation\Transport\Server\IocpTcpServer.cs" />
+    <Compile Include="Implementation\Transport\Server\IocpTcpSocket.cs" />
+    <Compile Include="Implementation\Transport\Server\IServer.cs" />
+    <Compile Include="Implementation\Transport\Server\Rooms\Iroom.cs" />
+    <Compile Include="Implementation\Transport\Server\Rooms\Room.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rebuilding\GenericRebuilder.cs" />
+    <Compile Include="Rebuilding\Rebuilder.cs" />
+    <Compile Include="Utility\AsyncUtility.cs" />
+    <Compile Include="Utility\ByteUtility.cs" />
+    <Compile Include="Utility\FileUtility.cs" />
+    <Compile Include="Utility\StreamUtility.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
